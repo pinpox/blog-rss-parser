@@ -19,9 +19,9 @@
       in rec {
         packages = flake-utils.lib.flattenTree rec {
 
-          hello-chicken = with pkgs;
+          blog-rss-parser = with pkgs;
             eggDerivation rec {
-              pname = "hello-chicken";
+              pname = "blog-rss-parser";
               version = "1.0.0";
               name = "${pname}-${version}";
 
@@ -49,14 +49,14 @@
             };
 
           # apps = {
-          #   hello-chicken= flake-utils.lib.mkApp {
-          #     drv = packages.hello-chicken;
+          #   blog-rss-parser= flake-utils.lib.mkApp {
+          #     drv = packages.blog-rss-parser;
           #     exePath = "/bin/home-assistant-grafana-relay";
           #   };
           # };
         };
 
-        defaultPackage = packages.hello-chicken;
-        # defaultApp = apps.hello-chicken;
+        defaultPackage = packages.blog-rss-parser;
+        # defaultApp = apps.blog-rss-parser;
       });
 }

@@ -4,5 +4,5 @@
  (category misc)
  (license "GPL3")
  (version "1.0.0")
- (dependencies this)
- (components (program hello-chicken)))
+ (dependencies ersatz rss)
+ (components (program blog-rss-parser)))
