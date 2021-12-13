@@ -4,5 +4,5 @@
  (category misc)
  (license "GPL3")
  (version "1.0.0")
- (dependencies ersatz rss)
+ (dependencies atom http-client openssl)
  (components (program blog-rss-parser)))

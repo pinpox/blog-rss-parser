@@ -33,10 +33,14 @@
               #   sha256 = "1l5zkr6b8l5dw9p5mimbva0ncqw1sbvp3d4cywm1hqx2m03a0f1n";
               # };
 
-              buildInputs = with eggs;
+              buildInputs = 
                 [
                   # Dependencies from eggs.nix
-                  this
+                  eggs.http-client
+                  openssl
+                  pkg-config
+                  eggs.openssl
+                  eggs.atom
                 ];
 
               meta = with lib; {

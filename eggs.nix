@@ -4,36 +4,83 @@ let
 in
 rec {
 
-  datatype = eggDerivation {
-    name = "datatype-1.6";
+  address-info = eggDerivation {
+    name = "address-info-1.0.5";
 
     src = fetchegg {
-      name = "datatype";
-      version = "1.6";
-      sha256 = "1sjxck6l388vxbj9qbn3px3hkkzzknz7xp2gw89zpqnf9869ig3x";
+      name = "address-info";
+      version = "1.0.5";
+      sha256 = "1nv87ghfv8szmi2l0rybrgrds6fs5w6jxafqslnzw0mw5sfj6jyk";
     };
 
     buildInputs = [
-      
+      srfi-1
     ];
   };
 
-  ersatz = eggDerivation {
-    name = "ersatz-1.28";
+  atom = eggDerivation {
+    name = "atom-0.1.5";
 
     src = fetchegg {
-      name = "ersatz";
-      version = "1.28";
-      sha256 = "1ckl25p86mvpyjslhzw0cybmbpzgqccmx5r5fard13q70zjin71f";
+      name = "atom";
+      version = "0.1.5";
+      sha256 = "0b5dcza9qmhc4gh216dxrmgnqv007cmxd968cl9p3wkhy80hh0vk";
     };
 
     buildInputs = [
-      datatype
-      silex
-      lalr
-      utf8
-      uri-generic
+      matchable
+      ssax
+      sxml-serializer
+      regex
+    ];
+  };
+
+  base64 = eggDerivation {
+    name = "base64-1.0";
+
+    src = fetchegg {
+      name = "base64";
+      version = "1.0";
+      sha256 = "01lid9wxf94nr7gmskamxlfngack1hyxig8rl9swwgnbmz9qgysi";
+    };
+
+    buildInputs = [
+      srfi-13
+    ];
+  };
+
+  defstruct = eggDerivation {
+    name = "defstruct-2.0";
+
+    src = fetchegg {
+      name = "defstruct";
+      version = "2.0";
+      sha256 = "0q1v1gdwqlpmwcsa4jnqldfqky9k7kvb83qgkhdyqym52bm5aln8";
+    };
+
+    buildInputs = [
       srfi-1
+    ];
+  };
+
+  http-client = eggDerivation {
+    name = "http-client-1.2.1";
+
+    src = fetchegg {
+      name = "http-client";
+      version = "1.2.1";
+      sha256 = "0n3wdz6kgkc8mj14wpsqawjygd9d9d65il8rk6b33sy9gsrqfp3s";
+    };
+
+    buildInputs = [
+      intarweb
+      uri-common
+      simple-md5
+      sendfile
+      srfi-1
+      srfi-13
+      srfi-18
+      srfi-69
     ];
   };
 
@@ -51,31 +98,22 @@ rec {
     ];
   };
 
-  iset = eggDerivation {
-    name = "iset-2.2";
+  intarweb = eggDerivation {
+    name = "intarweb-2.0.2";
 
     src = fetchegg {
-      name = "iset";
-      version = "2.2";
-      sha256 = "0yfkcd07cw6xnnqfbbvjy81x0vc54k40vdjp2m7gwxx64is6m3rz";
-    };
-
-    buildInputs = [
-      
-    ];
-  };
-
-  lalr = eggDerivation {
-    name = "lalr-2.5.2";
-
-    src = fetchegg {
-      name = "lalr";
-      version = "2.5.2";
-      sha256 = "1s1xhb1j31997ffgl69ksy3vdr4dnrjk7j9zpmasn3x2mipy9h7f";
+      name = "intarweb";
+      version = "2.0.2";
+      sha256 = "0iz3c1vv03hlsrgcpi0gcfzf8fzx2cwanwskn607na80xsnz714q";
     };
 
     buildInputs = [
       srfi-1
+      srfi-13
+      srfi-14
+      defstruct
+      uri-common
+      base64
     ];
   };
 
@@ -93,6 +131,40 @@ rec {
     ];
   };
 
+  memory-mapped-files = eggDerivation {
+    name = "memory-mapped-files-0.4";
+
+    src = fetchegg {
+      name = "memory-mapped-files";
+      version = "0.4";
+      sha256 = "0by3r18bj9fs0bs9w5czx84vssmr58br3x7pz1m3myb4mns3mpsc";
+    };
+
+    buildInputs = [
+      
+    ];
+  };
+
+  openssl = eggDerivation {
+    name = "openssl-2.2.4";
+
+    src = fetchegg {
+      name = "openssl";
+      version = "2.2.4";
+      sha256 = "0p2bc9vhxwm2nczr5m85r509gz7vnb5wyzmk1pby1vndfwplvrb2";
+    };
+
+    buildInputs = [
+
+      pkgs.openssl
+      pkgs.pkg-config
+      srfi-1
+      srfi-13
+      srfi-18
+      address-info
+    ];
+  };
+
   regex = eggDerivation {
     name = "regex-2.0";
 
@@ -107,32 +179,31 @@ rec {
     ];
   };
 
-  rss = eggDerivation {
-    name = "rss-1.7";
+  sendfile = eggDerivation {
+    name = "sendfile-1.8.3";
 
     src = fetchegg {
-      name = "rss";
-      version = "1.7";
-      sha256 = "077graf60kgilbjglh3zhfk4gzr105y1ljjbynsx7mhhms77n1my";
+      name = "sendfile";
+      version = "1.8.3";
+      sha256 = "0acmydjxlrbq7bdspmrzv9q9l3gh4xxnbpi5g1d5mz1g2mjwgm63";
     };
 
     buildInputs = [
-      matchable
-      srfi-1
-      ssax
+      memory-mapped-files
     ];
   };
 
-  silex = eggDerivation {
-    name = "silex-1.0";
+  simple-md5 = eggDerivation {
+    name = "simple-md5-0.1.1";
 
     src = fetchegg {
-      name = "silex";
-      version = "1.0";
-      sha256 = "0dmr11hgmx45f5mfggdh9kdf55gylbcw8glmlv2l20gy6p6cp8rz";
+      name = "simple-md5";
+      version = "0.1.1";
+      sha256 = "1sn8lijm4znmg80bk02wmvirdf4smxk4h2jsq5an5b6ycbdx8c4b";
     };
 
     buildInputs = [
+      memory-mapped-files
       srfi-13
     ];
   };
@@ -179,6 +250,20 @@ rec {
     ];
   };
 
+  srfi-18 = eggDerivation {
+    name = "srfi-18-0.1.6";
+
+    src = fetchegg {
+      name = "srfi-18";
+      version = "0.1.6";
+      sha256 = "00lykm5lqbrcxl3dab9dqwimpgm36v4ys2957k3vdlg4xdb1abfa";
+    };
+
+    buildInputs = [
+      
+    ];
+  };
+
   srfi-69 = eggDerivation {
     name = "srfi-69-0.4.3";
 
@@ -209,6 +294,40 @@ rec {
     ];
   };
 
+  sxml-serializer = eggDerivation {
+    name = "sxml-serializer-0.5";
+
+    src = fetchegg {
+      name = "sxml-serializer";
+      version = "0.5";
+      sha256 = "1xjshbcac5xkl5mbkg7a350x8n36567i37dnrc0hbix2i2h19c8m";
+    };
+
+    buildInputs = [
+      srfi-1
+      srfi-13
+    ];
+  };
+
+  uri-common = eggDerivation {
+    name = "uri-common-2.0";
+
+    src = fetchegg {
+      name = "uri-common";
+      version = "2.0";
+      sha256 = "07rq7ppkyk3i85vqspc048pnj6gmjhj236z00chslli9xybqkgrd";
+    };
+
+    buildInputs = [
+      uri-generic
+      defstruct
+      matchable
+      srfi-1
+      srfi-13
+      srfi-14
+    ];
+  };
+
   uri-generic = eggDerivation {
     name = "uri-generic-3.2";
 
@@ -222,22 +341,6 @@ rec {
       matchable
       srfi-1
       srfi-14
-    ];
-  };
-
-  utf8 = eggDerivation {
-    name = "utf8-3.6.2";
-
-    src = fetchegg {
-      name = "utf8";
-      version = "3.6.2";
-      sha256 = "10wzp3qmwik4gx3hhaqm2n83wza0rllgy57363h5ccv8fga5nnm6";
-    };
-
-    buildInputs = [
-      srfi-69
-      iset
-      regex
     ];
   };
 }
